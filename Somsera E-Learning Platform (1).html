@@ -1,0 +1,2593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Somsera — Online Courses by Ahmed Ismail Aaden</title>
+  <style>
+    /* =====================================================================
+       SOMSERA DESIGN SYSTEM & RESET (ZERO EXTERNAL DEPENDENCIES)
+       ===================================================================== */
+    :root {
+      --primary: #0056d2;
+      --primary-dark: #003e99;
+      --primary-light: #eef4ff;
+      --secondary: #0f172a;
+      --accent: #059669;
+      --accent-light: #ecfdf5;
+      --warning: #d97706;
+      --warning-light: #fffbeb;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 18px;
+      --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.08);
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+      --shadow-lg: 0 20px 40px rgba(15, 23, 42, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.55;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    button, input, select, textarea {
+      font-family: inherit;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* =====================================================================
+       TOP UTILITY BAR (CONTACT & BANK DETAILS)
+       ===================================================================== */
+    .top-bar {
+      background: #090d16;
+      color: #cbd5e1;
+      font-size: 12px;
+      padding: 8px 0;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .top-bar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .top-bar-contacts {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .top-bar-contacts span strong {
+      color: #ffffff;
+    }
+
+    .top-app-btn {
+      background: rgba(0, 86, 210, 0.25);
+      color: #93c5fd;
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 12px;
+      transition: 0.2s;
+    }
+
+    .top-app-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    /* =====================================================================
+       MAIN HEADER & NAVIGATION
+       ===================================================================== */
+    header.main-header {
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      padding: 12px 20px;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-align: left;
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0056d2, #1e3a8a);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(0, 86, 210, 0.3);
+    }
+
+    .brand-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--primary);
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    .brand-title span {
+      color: var(--secondary);
+    }
+
+    .brand-sub {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .search-box {
+      flex: 1;
+      max-width: 360px;
+      min-width: 200px;
+      display: flex;
+      align-items: center;
+      background: #f1f5f9;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 8px 16px;
+    }
+
+    .search-box input {
+      border: none;
+      background: transparent;
+      width: 100%;
+      font-size: 14px;
+      color: var(--text-main);
+      outline: none;
+    }
+
+    .nav-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .role-switcher {
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      gap: 4px;
+    }
+
+    .role-btn {
+      padding: 7px 14px;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-muted);
+      transition: 0.2s;
+    }
+
+    .role-btn.active-student {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .role-btn.active-instructor {
+      background: var(--secondary);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(0, 86, 210, 0.25);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-success {
+      background: var(--accent);
+      color: #ffffff;
+    }
+
+    .btn-success:hover {
+      background: #047857;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* =====================================================================
+       HERO SECTION & FOUNDER SPOTLIGHT CARD
+       ===================================================================== */
+    .hero {
+      background: linear-gradient(135deg, #090d16 0%, #0f2956 55%, #1e1b4b 100%);
+      color: #ffffff;
+      padding: 52px 0;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: 36px;
+      align-items: center;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(59, 130, 246, 0.2);
+      border: 1px solid rgba(96, 165, 250, 0.4);
+      color: #bfdbfe;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span {
+      color: #60a5fa;
+    }
+
+    .hero p.lead {
+      font-size: 16px;
+      color: #cbd5e1;
+      margin-bottom: 24px;
+      max-width: 600px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .payment-badges {
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+      padding-top: 16px;
+    }
+
+    .payment-badges-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: #94a3b8;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pay-pill {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      color: #f8fafc;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+
+    /* FOUNDER CARD */
+    .founder-card {
+      background: #ffffff;
+      color: var(--text-main);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .founder-top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .founder-avatar-wrap {
+      position: relative;
+      width: 92px;
+      height: 92px;
+      flex-shrink: 0;
+    }
+
+    .founder-avatar {
+      width: 92px;
+      height: 92px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #0056d2, #1e3a8a);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 3px solid var(--primary);
+      box-shadow: var(--shadow-md);
+    }
+
+    .founder-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .upload-photo-btn {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      background: var(--primary);
+      color: #fff;
+      border: 2px solid #fff;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 700;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .upload-photo-btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .founder-tag {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 999px;
+      margin-bottom: 4px;
+    }
+
+    .founder-name {
+      font-size: 21px;
+      font-weight: 900;
+      color: var(--secondary);
+    }
+
+    .founder-role {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .founder-quote {
+      font-size: 13.5px;
+      color: #334155;
+      margin-bottom: 16px;
+      line-height: 1.55;
+    }
+
+    .founder-details-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+    }
+
+    .detail-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 5px 0;
+      gap: 8px;
+    }
+
+    .detail-row:not(:last-child) {
+      border-bottom: 1px dashed #cbd5e1;
+    }
+
+    .detail-row span {
+      color: var(--text-muted);
+    }
+
+    .detail-row strong {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: var(--secondary);
+      font-size: 12.5px;
+    }
+
+    /* =====================================================================
+       COURSE CATALOG SECTION
+       ===================================================================== */
+    .section {
+      padding: 48px 0;
+    }
+
+    .section-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--secondary);
+    }
+
+    .section-subtitle {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .pill-btn {
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      background: #ffffff;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      transition: 0.2s;
+    }
+
+    .pill-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .course-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .course-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .course-banner {
+      padding: 20px;
+      color: #ffffff;
+      min-height: 155px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .banner-blue { background: linear-gradient(135deg, #1d4ed8, #1e1b4b); }
+    .banner-teal { background: linear-gradient(135deg, #0369a1, #0f172a); }
+    .banner-indigo { background: linear-gradient(135deg, #4338ca, #172554); }
+
+    .course-banner-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 12px;
+    }
+
+    .cat-tag {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .rating-tag {
+      background: rgba(0, 0, 0, 0.35);
+      color: #fde047;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-weight: 800;
+    }
+
+    .course-card-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-top: 12px;
+    }
+
+    .course-body {
+      padding: 20px;
+      flex: 1;
+    }
+
+    .instructor-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      margin-bottom: 12px;
+    }
+
+    .mini-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 800;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .mini-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .course-desc {
+      font-size: 13.5px;
+      color: #475569;
+      margin-bottom: 16px;
+    }
+
+    .course-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      padding-top: 12px;
+      border-top: 1px solid #f1f5f9;
+    }
+
+    .course-footer {
+      padding: 14px 20px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .price-label {
+      font-size: 10px;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #94a3b8;
+    }
+
+    .price-value {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--secondary);
+    }
+
+    .price-value span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+    }
+
+    /* =====================================================================
+       MOBILE APP STORE BANNER
+       ===================================================================== */
+    .app-download-banner {
+      background: var(--secondary);
+      color: #ffffff;
+      padding: 44px 0;
+      border-top: 1px solid #1e293b;
+    }
+
+    .app-banner-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .store-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .store-btn {
+      background: #ffffff;
+      color: var(--secondary);
+      padding: 10px 18px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-align: left;
+      font-weight: 800;
+      font-size: 14px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .store-btn small {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 700;
+    }
+
+    .store-btn.chrome-btn {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .store-btn.chrome-btn small {
+      color: #bfdbfe;
+    }
+
+    /* =====================================================================
+       INSTRUCTOR STUDIO & COURSE PLAYER VIEWS
+       ===================================================================== */
+    .panel-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .studio-header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .stat-boxes {
+      display: flex;
+      gap: 12px;
+    }
+
+    .stat-box {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .stat-box strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 900;
+    }
+
+    .stat-box span {
+      font-size: 11px;
+      color: #cbd5e1;
+    }
+
+    .tabs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .two-col-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 840px) {
+      .two-col-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 14px;
+      background: #ffffff;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(0, 86, 210, 0.12);
+    }
+
+    /* TABLE */
+    .table-wrap {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13.5px;
+    }
+
+    th, td {
+      padding: 12px 14px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+
+    th {
+      background: #f8fafc;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      font-weight: 800;
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .status-approved {
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #a7f3d0;
+    }
+
+    .status-pending {
+      background: var(--warning-light);
+      color: var(--warning);
+      border: 1px solid #fde68a;
+    }
+
+    /* VIDEO PLAYER LAYOUT */
+    .player-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .player-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .video-wrapper {
+      width: 100%;
+      background: #000;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      margin-bottom: 16px;
+    }
+
+    .video-wrapper video, .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .lesson-item {
+      width: 100%;
+      text-align: left;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: #ffffff;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .lesson-item.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* QUIZ STYLES */
+    .quiz-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .quiz-option {
+      width: 100%;
+      text-align: left;
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 1px solid #cbd5e1;
+      background: #ffffff;
+      margin-top: 8px;
+      font-size: 14px;
+      display: block;
+    }
+
+    .quiz-option.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+      font-weight: 700;
+    }
+
+    .quiz-option.correct {
+      border-color: var(--accent);
+      background: var(--accent-light);
+      color: #065f46;
+      font-weight: 700;
+    }
+
+    .quiz-option.wrong {
+      border-color: var(--danger);
+      background: #fef2f2;
+      color: #991b1b;
+    }
+
+    /* =====================================================================
+       MODALS & TOAST NOTIFICATION
+       ===================================================================== */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      z-index: 100;
+      overflow-y: auto;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      max-width: 580px;
+      width: 100%;
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      animation: popIn 0.2s ease;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .modal-header {
+      background: var(--secondary);
+      color: #ffffff;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .modal-close {
+      color: #94a3b8;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .modal-close:hover {
+      color: #ffffff;
+    }
+
+    .modal-body {
+      padding: 22px;
+      max-height: 82vh;
+      overflow-y: auto;
+    }
+
+    .pay-methods-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .pay-method-card {
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 10px;
+      text-align: left;
+      background: #ffffff;
+    }
+
+    .pay-method-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0f172a;
+      color: #ffffff;
+      border-left: 4px solid #10b981;
+      padding: 14px 18px;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      z-index: 200;
+      max-width: 380px;
+      font-size: 13.5px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #090d16;
+      color: #94a3b8;
+      padding: 44px 0 24px;
+      margin-top: auto;
+      font-size: 13px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .footer-title {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+
+    .footer-list {
+      list-style: none;
+      space-y: 8px;
+    }
+
+    .footer-list li {
+      margin-bottom: 8px;
+    }
+
+    .footer-list strong {
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="toast hidden">
+    <span id="toast-msg">Notification</span>
+    <button onclick="hideToast()" style="color:#94a3b8;font-weight:bold;">✕</button>
+  </div>
+
+  <!-- TOP UTILITY BAR -->
+  <div class="top-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-contacts">
+        <span>📞 Fee &amp; Support: <strong>00251900000833 / 00252634627643</strong></span>
+        <span>🏦 Bank Acc: <strong>1000141173271</strong></span>
+        <span>✉️ <strong>Ahmedismailawaaden58@gmail.com</strong></span>
+      </div>
+      <button class="top-app-btn" onclick="openModal('modal-app')">
+        📱 Install Mobile App (Play Store / App Store / Chrome)
+      </button>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="main-header">
+    <div class="header-inner">
+      <button class="brand" onclick="switchMode('student'); showStudentView('home');">
+        <div class="brand-icon">S</div>
+        <div>
+          <div class="brand-title">Som<span>sera</span></div>
+          <div class="brand-sub">By Ahmed Ismail Aaden</div>
+        </div>
+      </button>
+
+      <div class="search-box" id="header-search-wrap">
+        <span style="margin-right:8px;color:#64748b;">🔍</span>
+        <input type="text" id="search-input" placeholder="Search courses by Ahmed Ismail Aaden..." oninput="handleSearch(this.value)" />
+      </div>
+
+      <div class="nav-actions">
+        <div class="role-switcher">
+          <button id="btn-role-student" class="role-btn active-student" onclick="switchMode('student')">
+            Student Portal
+          </button>
+          <button id="btn-role-instructor" class="role-btn" onclick="switchMode('instructor')">
+            🎥 Instructor Studio
+          </button>
+        </div>
+
+        <button id="btn-my-learning" class="btn btn-outline" onclick="showStudentView('my-learning')">
+          📚 My Learning
+        </button>
+
+        <button id="btn-auth-trigger" class="btn btn-primary" onclick="openModal('modal-auth')">
+          Join for Free
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- =====================================================================
+       STUDENT PORTAL CONTAINER
+       ===================================================================== -->
+  <div id="student-portal">
+
+    <!-- VIEW 1: FRONT PAGE (HERO + FOUNDER + COURSE CATALOG) -->
+    <div id="view-home">
+      <!-- HERO SECTION -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="hero-badge">🎓 World-Class Education • Local Mobile Payments</div>
+            <h1>Learn Without Limits on <span>Somsera</span></h1>
+            <p class="lead">
+              Master Mathematics, Computer Skills, and Academic Subjects with structured video courses, interactive quizzes, and verified certificates taught directly by Founder &amp; Lead Teacher <strong>Ahmed Ismail Aaden</strong>.
+            </p>
+            <div class="hero-cta-group">
+              <button class="btn btn-primary" style="padding:14px 24px;font-size:15px;" onclick="openModal('modal-auth')">
+                Register as a Student →
+              </button>
+              <a href="#catalog" class="btn btn-outline" style="background:rgba(255,255,255,0.1);color:#fff;border-color:rgba(255,255,255,0.25);padding:14px 22px;">
+                Explore Courses
+              </a>
+            </div>
+
+            <div class="payment-badges">
+              <div class="payment-badges-label">Accepted Fee Payment Channels:</div>
+              <div class="badge-row">
+                <span class="pay-pill">eBirr COOpay</span>
+                <span class="pay-pill">Kaafi eBirr</span>
+                <span class="pay-pill">Zaad Service</span>
+                <span class="pay-pill">eDahab</span>
+                <span class="pay-pill">Bank: 1000141173271</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- FOUNDER & LEAD INSTRUCTOR CARD -->
+          <div class="founder-card">
+            <div class="founder-top">
+              <div class="founder-avatar-wrap">
+                <div class="founder-avatar" id="founder-photo-container">
+                  <span style="font-size:26px;font-weight:900;">AA</span>
+                  <span style="font-size:9px;text-transform:uppercase;letter-spacing:1px;">Founder</span>
+                </div>
+                <label class="upload-photo-btn" title="Upload your photo">
+                  📷 Photo
+                  <input type="file" accept="image/*" style="display:none;" onchange="handleFounderPhotoUpload(event)" />
+                </label>
+              </div>
+              <div>
+                <span class="founder-tag">Founder &amp; Lead Teacher</span>
+                <div class="founder-name">Ahmed Ismail Aaden</div>
+                <div class="founder-role">Curriculum Designer &amp; Senior Educator</div>
+              </div>
+            </div>
+
+            <p class="founder-quote">
+              "Welcome to <strong>Somsera</strong>. Click <strong>📷 Photo</strong> on my profile picture above to upload your portrait. Students can register, watch my video lessons, take quizzes, and pay tuition seamlessly via eBirr, Kaafi, Zaad, eDahab, or Bank."
+            </p>
+
+            <div class="founder-details-box">
+              <div class="detail-row">
+                <span>eBirr / Kaafi / Ethiopia:</span>
+                <strong>00251900000833</strong>
+              </div>
+              <div class="detail-row">
+                <span>Zaad / eDahab Line:</span>
+                <strong>00252634627643</strong>
+              </div>
+              <div class="detail-row">
+                <span>Official Bank Account:</span>
+                <strong style="color:#0056d2;">1000141173271</strong>
+              </div>
+              <div class="detail-row">
+                <span>Instructor Email:</span>
+                <strong style="font-family:inherit;">Ahmedismailawaaden58@gmail.com</strong>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- COURSE CATALOG -->
+      <section class="section" id="catalog">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Courses Taught by Ahmed Ismail Aaden</h2>
+              <p class="section-subtitle">Enroll now, pay via mobile money or bank, and start watching video lessons immediately.</p>
+            </div>
+            <div class="filter-pills" id="category-filters">
+              <button class="pill-btn active" onclick="filterCategory('All', this)">All Courses</button>
+              <button class="pill-btn" onclick="filterCategory('Mathematics', this)">Mathematics</button>
+              <button class="pill-btn" onclick="filterCategory('Computer Skills', this)">Computer Skills</button>
+              <button class="pill-btn" onclick="filterCategory('Languages', this)">English &amp; Languages</button>
+            </div>
+          </div>
+
+          <div class="course-grid" id="course-grid">
+            <!-- Rendered dynamically via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- MOBILE APP DOWNLOAD SECTION -->
+      <section class="app-download-banner">
+        <div class="container app-banner-inner">
+          <div style="max-width:600px;">
+            <div style="color:#60a5fa;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;">
+              Learn Anywhere on Your Smartphone
+            </div>
+            <h2 style="font-size:26px;font-weight:900;margin-bottom:8px;">
+              Download &amp; Install Somsera on Android, iPhone &amp; Chrome
+            </h2>
+            <p style="color:#cbd5e1;font-size:14px;">
+              Students can install the Somsera mobile app directly onto their home screen from Google Chrome, or access the Google Play Store and Apple App Store editions.
+            </p>
+          </div>
+          <div class="store-buttons">
+            <button class="store-btn" onclick="openModal('modal-app')">
+              <span style="font-size:22px;">▶️</span>
+              <div>
+                <small>Get it on</small>
+                Google Play Store
+              </div>
+            </button>
+            <button class="store-btn" onclick="openModal('modal-app')">
+              <span style="font-size:22px;">🍎</span>
+              <div>
+                <small>Download on the</small>
+                Apple App Store
+              </div>
+            </button>
+            <button class="store-btn chrome-btn" onclick="openModal('modal-app')">
+              <span style="font-size:22px;">🌐</span>
+              <div>
+                <small>Instant Phone Install</small>
+                Google Chrome App
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- VIEW 2: COURSE VIDEO PLAYER & QUIZ -->
+    <div id="view-player" class="hidden">
+      <section class="section">
+        <div class="container">
+          <button class="btn btn-outline" style="margin-bottom:16px;" onclick="showStudentView('home')">
+            ← Back to Course Catalog
+          </button>
+
+          <div class="panel-card">
+            <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;padding-bottom:18px;margin-bottom:20px;border-bottom:1px solid var(--border);">
+              <div>
+                <span id="player-cat-badge" class="founder-tag">Mathematics</span>
+                <h2 id="player-course-title" style="font-size:22px;font-weight:900;margin-top:4px;">Course Title</h2>
+                <p style="font-size:13px;color:var(--text-muted);">Instructor: <strong>Ahmed Ismail Aaden</strong></p>
+              </div>
+              <div style="display:flex;gap:8px;">
+                <button id="tab-btn-lessons" class="btn btn-primary" onclick="switchPlayerTab('lessons')">🎥 Video Lessons</button>
+                <button id="tab-btn-quiz" class="btn btn-outline" onclick="switchPlayerTab('quiz')">📝 Take Quiz</button>
+                <button id="tab-btn-cert" class="btn btn-outline" onclick="switchPlayerTab('cert')">🏆 Certificate</button>
+              </div>
+            </div>
+
+            <!-- PLAYER SUB-TAB: VIDEO LESSONS -->
+            <div id="player-sub-lessons" class="player-grid">
+              <div>
+                <div class="video-wrapper" id="video-player-container">
+                  <!-- Video element injected dynamically -->
+                </div>
+                <h3 id="current-lesson-title" style="font-size:19px;font-weight:800;margin-bottom:8px;">Lesson Title</h3>
+                <div style="background:var(--primary-light);border:1px solid #bfdbfe;border-radius:12px;padding:14px;">
+                  <div style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--primary);margin-bottom:4px;">
+                    Study Notes by Ahmed Ismail Aaden
+                  </div>
+                  <p id="current-lesson-notes" style="font-size:14px;color:#1e293b;">Notes</p>
+                </div>
+              </div>
+
+              <div>
+                <h4 style="font-size:15px;font-weight:800;margin-bottom:12px;">Course Video Playlist</h4>
+                <div id="lesson-playlist"></div>
+              </div>
+            </div>
+
+            <!-- PLAYER SUB-TAB: QUIZ -->
+            <div id="player-sub-quiz" class="hidden" style="max-width:740px;margin:0 auto;">
+              <h3 style="font-size:20px;font-weight:900;margin-bottom:6px;">Course Assessment Quiz</h3>
+              <p style="font-size:13.5px;color:var(--text-muted);margin-bottom:20px;">
+                Select the correct answers below and click <strong>Submit Quiz</strong> for instant grading.
+              </p>
+              <div id="quiz-questions-list"></div>
+              <div style="display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:16px;">
+                <button class="btn btn-primary" onclick="submitQuiz()">Submit Quiz &amp; Grade</button>
+                <div id="quiz-result-banner" class="hidden" style="font-weight:800;color:var(--accent);font-size:15px;"></div>
+              </div>
+            </div>
+
+            <!-- PLAYER SUB-TAB: CERTIFICATE -->
+            <div id="player-sub-cert" class="hidden">
+              <div style="max-width:700px;margin:0 auto;border:6px double #1e3a8a;border-radius:16px;padding:36px 24px;text-align:center;background:linear-gradient(135deg,#ffffff,#eff6ff);">
+                <div style="font-size:36px;margin-bottom:8px;">🎓</div>
+                <div style="font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:var(--primary);">
+                  Somsera Academy • Official Certificate
+                </div>
+                <h2 style="font-size:28px;font-family:Georgia,serif;margin:10px 0;">Certificate of Completion</h2>
+                <p style="font-size:14px;color:var(--text-muted);">This certifies that</p>
+                <div id="cert-student-name" style="font-size:26px;font-weight:900;color:#1e3a8a;margin:8px 0;border-bottom:2px solid #cbd5e1;display:inline-block;padding:0 24px 4px;">
+                  Student Name
+                </div>
+                <p style="font-size:14px;color:var(--text-muted);margin-top:10px;">has successfully completed the course</p>
+                <h3 id="cert-course-title" style="font-size:19px;font-weight:800;margin:8px 0 24px;">Course Title</h3>
+                <div style="display:flex;justify-content:space-around;flex-wrap:wrap;gap:16px;padding-top:18px;border-top:1px solid #cbd5e1;font-size:13px;">
+                  <div>
+                    <strong style="font-family:Georgia,serif;font-style:italic;font-size:16px;">Ahmed Ismail Aaden</strong>
+                    <div style="color:var(--text-muted);font-size:11px;">Founder &amp; Lead Instructor</div>
+                  </div>
+                  <div>
+                    <strong>Verified by Somsera</strong>
+                    <div style="color:var(--text-muted);font-size:11px;">Contact: 00251900000833</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- VIEW 3: MY LEARNING DASHBOARD -->
+    <div id="view-my-learning" class="hidden">
+      <section class="section">
+        <div class="container" style="max-width:900px;">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">My Enrolled Courses</h2>
+              <p class="section-subtitle" id="my-learning-student-info">Student Account</p>
+            </div>
+            <button class="btn btn-primary" onclick="showStudentView('home')">+ Browse More Courses</button>
+          </div>
+          <div id="my-enrollments-list"></div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+  <!-- =====================================================================
+       INSTRUCTOR / FOUNDER STUDIO (AHMED ISMAIL AADEN)
+       ===================================================================== -->
+  <div id="instructor-studio" class="hidden">
+    <section class="section">
+      <div class="container">
+        <div class="studio-header">
+          <div>
+            <span class="hero-badge" style="margin-bottom:8px;">🛡️ Founder &amp; Teacher Control Panel</span>
+            <h1 style="font-size:26px;font-weight:900;">Ahmed Ismail Aaden — Instructor Studio</h1>
+            <p style="font-size:13.5px;color:#cbd5e1;margin-top:4px;">
+              Create courses, upload video lessons, add quiz questions, and approve student payments (eBirr, Kaafi, Zaad, eDahab, Bank).
+            </p>
+          </div>
+          <div class="stat-boxes">
+            <div class="stat-box">
+              <strong id="stat-courses">0</strong>
+              <span>Courses</span>
+            </div>
+            <div class="stat-box">
+              <strong id="stat-students">0</strong>
+              <span>Students</span>
+            </div>
+            <div class="stat-box">
+              <strong id="stat-pending" style="color:#fbbf24;">0</strong>
+              <span>Pending Fees</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="tabs-row">
+          <button id="studio-tab-upload" class="btn btn-primary" onclick="switchStudioTab('upload')">🎥 Upload Videos &amp; Quizzes</button>
+          <button id="studio-tab-create" class="btn btn-outline" onclick="switchStudioTab('create')">➕ Create New Course</button>
+          <button id="studio-tab-payments" class="btn btn-outline" onclick="switchStudioTab('payments')">💳 Verify Fee Payments</button>
+          <button id="studio-tab-students" class="btn btn-outline" onclick="switchStudioTab('students')">👥 Registered Students</button>
+        </div>
+
+        <!-- STUDIO TAB 1: UPLOAD VIDEO & QUIZ -->
+        <div id="studio-panel-upload" class="two-col-grid">
+          <div class="panel-card">
+            <h3 style="font-size:18px;font-weight:800;margin-bottom:14px;">📤 Upload Video Lesson</h3>
+            <form onsubmit="handleAddLesson(event)">
+              <div class="form-group">
+                <label class="form-label">Select Course</label>
+                <select id="lesson-course-select" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Lesson Title</label>
+                <input type="text" id="lesson-title-input" class="form-control" placeholder="e.g., Lesson 3: Calculus Derivatives" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Choose Video File from Device (MP4/WebM)</label>
+                <input type="file" id="lesson-file-input" accept="video/*" class="form-control" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Or Paste Video URL (MP4 / YouTube Embed)</label>
+                <input type="text" id="lesson-url-input" class="form-control" placeholder="https://..." />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Lesson Summary &amp; Notes</label>
+                <textarea id="lesson-notes-input" class="form-control" rows="3" placeholder="Write key formulas or notes for students..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;">Publish Video Lesson</button>
+            </form>
+          </div>
+
+          <div class="panel-card">
+            <h3 style="font-size:18px;font-weight:800;margin-bottom:14px;">❓ Add Quiz Question</h3>
+            <form onsubmit="handleAddQuiz(event)">
+              <div class="form-group">
+                <label class="form-label">Select Course</label>
+                <select id="quiz-course-select" class="form-control"></select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Question Text</label>
+                <input type="text" id="quiz-q-input" class="form-control" placeholder="Enter quiz question..." required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Answer Options</label>
+                <input type="text" id="quiz-opt-0" class="form-control" placeholder="Option A" required style="margin-bottom:6px;" />
+                <input type="text" id="quiz-opt-1" class="form-control" placeholder="Option B" required style="margin-bottom:6px;" />
+                <input type="text" id="quiz-opt-2" class="form-control" placeholder="Option C" style="margin-bottom:6px;" />
+                <input type="text" id="quiz-opt-3" class="form-control" placeholder="Option D" />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Correct Option</label>
+                <select id="quiz-correct-select" class="form-control">
+                  <option value="0">Option A</option>
+                  <option value="1">Option B</option>
+                  <option value="2">Option C</option>
+                  <option value="3">Option D</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;background:#4338ca;">Add Question to Course Quiz</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- STUDIO TAB 2: CREATE COURSE -->
+        <div id="studio-panel-create" class="panel-card hidden" style="max-width:650px;">
+          <h3 style="font-size:19px;font-weight:800;margin-bottom:14px;">Create New Course on Somsera</h3>
+          <form onsubmit="handleCreateCourse(event)">
+            <div class="form-group">
+              <label class="form-label">Course Title</label>
+              <input type="text" id="new-course-title" class="form-control" placeholder="e.g., Complete Secondary Physics" required />
+            </div>
+            <div class="two-col-grid">
+              <div class="form-group">
+                <label class="form-label">Category</label>
+                <select id="new-course-cat" class="form-control">
+                  <option value="Mathematics">Mathematics</option>
+                  <option value="Computer Skills">Computer Skills</option>
+                  <option value="Languages">English &amp; Languages</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Duration</label>
+                <input type="text" id="new-course-duration" class="form-control" value="10 Weeks" />
+              </div>
+            </div>
+            <div class="two-col-grid">
+              <div class="form-group">
+                <label class="form-label">Fee in ETB (eBirr / Kaafi / Bank)</label>
+                <input type="number" id="new-course-etb" class="form-control" value="400" required />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Fee in USD (Zaad / eDahab)</label>
+                <input type="number" id="new-course-usd" class="form-control" value="7" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Course Description</label>
+              <textarea id="new-course-desc" class="form-control" rows="3" placeholder="Describe what students will learn..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Publish Course</button>
+          </form>
+        </div>
+
+        <!-- STUDIO TAB 3: FEE VERIFICATIONS -->
+        <div id="studio-panel-payments" class="panel-card hidden">
+          <h3 style="font-size:18px;font-weight:800;margin-bottom:4px;">Student Fee Payments &amp; Approvals</h3>
+          <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
+            Verify incoming payments on <strong>00251900000833</strong>, <strong>00252634627643</strong>, or Bank Account <strong>1000141173271</strong>.
+          </p>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student</th>
+                  <th>Course</th>
+                  <th>Payment Method</th>
+                  <th>Transaction ID</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="payments-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- STUDIO TAB 4: REGISTERED STUDENTS -->
+        <div id="studio-panel-students" class="panel-card hidden">
+          <h3 style="font-size:18px;font-weight:800;margin-bottom:14px;">Registered Students Directory</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Email</th>
+                  <th>Phone Number</th>
+                  <th>Joined Date</th>
+                </tr>
+              </thead>
+              <tbody id="students-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 1: CHECKOUT & MOBILE MONEY PAYMENT
+       ===================================================================== -->
+  <div id="modal-checkout" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div>
+          <div style="font-size:11px;text-transform:uppercase;color:#93c5fd;font-weight:700;">Somsera Tuition Checkout</div>
+          <h3 id="checkout-course-title" style="font-size:17px;font-weight:800;">Course Title</h3>
+        </div>
+        <button class="modal-close" onclick="closeModal('modal-checkout')">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:var(--primary-light);border:1px solid #bfdbfe;border-radius:12px;padding:14px;display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+          <div>
+            <div style="font-size:12px;font-weight:700;color:var(--primary);">Payable to Founder: Ahmed Ismail Aaden</div>
+            <div style="font-size:11.5px;color:var(--text-muted);">Instant course unlock upon verification</div>
+          </div>
+          <div id="checkout-fee-display" style="font-size:18px;font-weight:900;color:var(--secondary);">450 ETB / $8</div>
+        </div>
+
+        <label class="form-label">1. Select Payment Method</label>
+        <div class="pay-methods-grid" id="payment-methods-grid"></div>
+
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid var(--border);">
+            <span style="font-size:12px;font-weight:700;">Send Fee To:</span>
+            <strong id="pay-recipient-number" style="font-family:monospace;font-size:15px;color:var(--primary);background:#fff;padding:3px 10px;border-radius:6px;border:1px solid #bfdbfe;">00251900000833</strong>
+          </div>
+          <ol id="pay-instructions-list" style="padding-left:18px;font-size:12.5px;color:#334155;line-height:1.6;"></ol>
+        </div>
+
+        <form onsubmit="handlePaymentSubmit(event)">
+          <div class="two-col-grid">
+            <div class="form-group">
+              <label class="form-label">Your Sender Phone</label>
+              <input type="text" id="checkout-phone" class="form-control" placeholder="09... or 063..." required />
+            </div>
+            <div class="form-group">
+              <label class="form-label">SMS Transaction Reference ID *</label>
+              <input type="text" id="checkout-ref" class="form-control" placeholder="e.g. EBR88412 or FT26..." style="font-family:monospace;text-transform:uppercase;" required />
+            </div>
+          </div>
+          <button type="submit" class="btn btn-success" style="width:100%;padding:13px;font-size:15px;">
+            ✓ Confirm Payment &amp; Submit Reference
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 2: STUDENT REGISTRATION & LOGIN
+       ===================================================================== -->
+  <div id="modal-auth" class="modal-backdrop hidden">
+    <div class="modal-box" style="max-width:440px;">
+      <div class="modal-header">
+        <h3 id="auth-modal-title" style="font-size:17px;font-weight:800;">Register Student Account</h3>
+        <button class="modal-close" onclick="closeModal('modal-auth')">✕</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="handleAuthSubmit(event)">
+          <div class="form-group" id="auth-name-group">
+            <label class="form-label">Student Full Name</label>
+            <input type="text" id="auth-name" class="form-control" placeholder="Enter your full name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" id="auth-email" class="form-control" placeholder="student@example.com" required />
+          </div>
+          <div class="form-group" id="auth-phone-group">
+            <label class="form-label">Phone Number (Ethiopia / Somaliland)</label>
+            <input type="tel" id="auth-phone" class="form-control" placeholder="+251 9... or +252 63..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <input type="password" id="auth-pass" class="form-control" placeholder="••••••••" required />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width:100%;padding:12px;">
+            Continue to Somsera
+          </button>
+        </form>
+        <div style="text-align:center;margin-top:14px;font-size:13px;color:var(--text-muted);">
+          <span id="auth-switch-text">Already registered?</span>
+          <button type="button" id="auth-switch-btn" style="color:var(--primary);font-weight:800;margin-left:4px;" onclick="toggleAuthMode()">
+            Sign In
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       MODAL 3: MOBILE APP INSTALLATION GUIDE (CHROME / PLAY STORE / IOS)
+       ===================================================================== -->
+  <div id="modal-app" class="modal-backdrop hidden">
+    <div class="modal-box">
+      <div class="modal-header">
+        <h3 style="font-size:17px;font-weight:800;">📱 Install Somsera App on Your Phone</h3>
+        <button class="modal-close" onclick="closeModal('modal-app')">✕</button>
+      </div>
+      <div class="modal-body" style="font-size:13.5px;color:#334155;">
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;">
+          <strong style="color:var(--primary);display:block;margin-bottom:4px;">1. Google Chrome (Instant Phone App Install)</strong>
+          Open <strong>Somsera</strong> in Google Chrome on your Android phone, tap the <strong>⋮ Menu</strong> in the top-right corner, and tap <strong>"Add to Home screen"</strong> or <strong>"Install App"</strong>. It installs immediately like a native app!
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px;">
+          <strong style="color:var(--secondary);display:block;margin-bottom:4px;">2. Google Play Store (Android)</strong>
+          Search for <strong>"Somsera - Ahmed Ismail Aaden"</strong> on Google Play Store to install the official Android learning app.
+        </div>
+        <div style="background:#f8fafc;border:1px solid var(--border);border-radius:12px;padding:14px;">
+          <strong style="color:var(--secondary);display:block;margin-bottom:4px;">3. Apple App Store (iPhone &amp; iPad)</strong>
+          Open Somsera in Safari on your iPhone, tap the <strong>Share (⬆️)</strong> icon, and select <strong>"Add to Home Screen"</strong> or download from the iOS App Store.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       FOOTER WITH COMPLETE CONTACT & BANK DETAILS
+       ===================================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-title" style="font-size:18px;color:#60a5fa;">Somsera Academy</div>
+          <p style="line-height:1.6;">
+            Founded and taught by <strong>Ahmed Ismail Aaden</strong>. Empowering students across Ethiopia, Somaliland, and beyond with video lectures, quizzes, and mobile money access.
+          </p>
+        </div>
+        <div>
+          <div class="footer-title">Fee Collection &amp; Bank Accounts</div>
+          <ul class="footer-list">
+            <li>eBirr COOpay &amp; Kaafi: <strong>00251900000833</strong></li>
+            <li>Zaad &amp; eDahab Line: <strong>00252634627643</strong></li>
+            <li>Bank Account Number: <strong style="color:#fbbf24;">1000141173271</strong></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-title">Founder &amp; Support Contact</div>
+          <ul class="footer-list">
+            <li>Founder &amp; Teacher: <strong>Ahmed Ismail Aaden</strong></li>
+            <li>Email: <strong>Ahmedismailawaaden58@gmail.com</strong></li>
+            <li>Phone: <strong>00251900000833 / 00252634627643</strong></li>
+          </ul>
+        </div>
+      </div>
+      <div style="padding-top:20px;text-align:center;font-size:12px;color:#64748b;">
+        © 2026 Somsera E-Learning Platform • Founded by Ahmed Ismail Aaden.
+      </div>
+    </div>
+  </footer>
+
+  <!-- =====================================================================
+       VANILLA JAVASCRIPT APPLICATION LOGIC (PERSISTED IN LOCALSTORAGE)
+       ===================================================================== -->
+  <script>
+    // --- DEFAULT DATA ---
+    const DEFAULT_COURSES = [
+      {
+        id: "c-math",
+        title: "Complete Secondary & University Mathematics Mastery",
+        category: "Mathematics",
+        bannerClass: "banner-blue",
+        priceETB: 450,
+        priceUSD: 8,
+        rating: "4.9",
+        students: 1420,
+        duration: "14 Weeks",
+        description: "Master Algebra, Calculus, Trigonometry, and Analytical Geometry with step-by-step video lectures and interactive quizzes by Ahmed Ismail Aaden.",
+        lessons: [
+          {
+            id: "l-1",
+            title: "1. Foundations of Algebraic Functions & Graphs",
+            videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
+            notes: "Key formula: Quadratic vertex form y = a(x - h)² + k. Always check domain restrictions before solving rational equations."
+          },
+          {
+            id: "l-2",
+            title: "2. Limits, Continuity & Introduction to Derivatives",
+            videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4",
+            notes: "Power Rule for Derivatives: d/dx [x^n] = n * x^(n-1)."
+          }
+        ],
+        quiz: [
+          {
+            question: "What is the derivative of f(x) = 3x² + 5x - 7?",
+            options: ["6x + 5", "3x + 5", "6x² + 5", "6x - 7"],
+            correct: 0
+          },
+          {
+            question: "If log₂(x) = 5, what is the value of x?",
+            options: ["10", "25", "32", "64"],
+            correct: 2
+          }
+        ]
+      },
+      {
+        id: "c-comp",
+        title: "Practical Computer Skills, MS Office & Digital Literacy",
+        category: "Computer Skills",
+        bannerClass: "banner-teal",
+        priceETB: 350,
+        priceUSD: 6,
+        rating: "4.8",
+        students: 980,
+        duration: "8 Weeks",
+        description: "Build practical computer skills including Microsoft Word, Excel formulas, PowerPoint presentations, and modern digital productivity.",
+        lessons: [
+          {
+            id: "l-201",
+            title: "1. Windows File Management & Digital Productivity",
+            videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4",
+            notes: "Organize academic and business files into structured directories with regular backups."
+          }
+        ],
+        quiz: [
+          {
+            question: "Which symbol must every formula in Microsoft Excel begin with?",
+            options: ["#", "=", "@", "$"],
+            correct: 1
+          }
+        ]
+      },
+      {
+        id: "c-eng",
+        title: "Academic English Grammar & Professional Communication",
+        category: "Languages",
+        bannerClass: "banner-indigo",
+        priceETB: 300,
+        priceUSD: 5,
+        rating: "4.9",
+        students: 1150,
+        duration: "10 Weeks",
+        description: "Improve spoken English, academic essay writing, grammar tenses, and professional email communication with Ahmed Ismail Aaden.",
+        lessons: [
+          {
+            id: "l-301",
+            title: "1. Mastering English Tenses in Academic Writing",
+            videoUrl: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoy.mp4",
+            notes: "Use Past Simple for completed actions at a specific time in the past."
+          }
+        ],
+        quiz: [
+          {
+            question: "Choose the correct sentence:",
+            options: [
+              "She completed her assignment yesterday.",
+              "She completing her assignment yesterday.",
+              "She have complete her assignment yesterday.",
+              "She completes her assignment yesterday."
+            ],
+            correct: 0
+          }
+        ]
+      }
+    ];
+
+    const PAYMENT_METHODS = [
+      {
+        id: "ebirr",
+        name: "eBirr (COOpay-eBirr)",
+        sub: "Ethiopia Mobile Money",
+        recipient: "00251900000833",
+        steps: [
+          "Dial *847# or open your COOpay-eBirr app.",
+          "Select 'Send Money' and enter: 00251900000833 (Ahmed Ismail Aaden).",
+          "Enter the course fee amount in ETB and confirm with your PIN.",
+          "Enter the SMS Transaction ID below to unlock your course."
+        ]
+      },
+      {
+        id: "kaafi",
+        name: "Kaafi eBirr",
+        sub: "Fast Mobile Transfer",
+        recipient: "00251900000833",
+        steps: [
+          "Open your Kaafi / eBirr USSD (*847#) or Kaafi mobile app.",
+          "Transfer the fee to Official Number: 00251900000833.",
+          "Confirm recipient Ahmed Ismail Aaden and paste your receipt code below."
+        ]
+      },
+      {
+        id: "zaad",
+        name: "Zaad Service",
+        sub: "Telesom Mobile Money",
+        recipient: "00252634627643",
+        steps: [
+          "Dial *220# (Zaad USD) or *880# on your mobile phone.",
+          "Select 'Send Money' and enter: 00252634627643.",
+          "Verify name Ahmed Ismail Aaden, complete transfer, and enter Transaction ID below."
+        ]
+      },
+      {
+        id: "edahab",
+        name: "eDahab",
+        sub: "Somtel Mobile Wallet",
+        recipient: "00252634627643",
+        steps: [
+          "Dial *110# or open the eDahab app.",
+          "Send the course fee to: 00252634627643 (Ahmed Ismail Aaden).",
+          "Paste your SMS confirmation code below."
+        ]
+      },
+      {
+        id: "bank",
+        name: "Bank Transfer",
+        sub: "Direct Bank Account",
+        recipient: "1000141173271",
+        steps: [
+          "Use Mobile Banking or visit any bank branch.",
+          "Transfer course fee to Account Number: 1000141173271.",
+          "Account Holder Name: Ahmed Ismail Aaden.",
+          "Enter the bank receipt / FT reference number below."
+        ]
+      }
+    ];
+
+    // --- APPLICATION STATE (LOADED FROM LOCALSTORAGE IF AVAILABLE) ---
+    let state = {
+      courses: JSON.parse(localStorage.getItem("somsera_courses")) || DEFAULT_COURSES,
+      founderPhoto: localStorage.getItem("somsera_founder_photo") || null,
+      currentStudent: JSON.parse(localStorage.getItem("somsera_current_student")) || {
+        id: "stu-1",
+        name: "Fadumo Abdi",
+        email: "fadumo@somsera.edu",
+        phone: "+251 911 234 567",
+        joined: "2026-11-15"
+      },
+      students: JSON.parse(localStorage.getItem("somsera_students")) || [
+        { id: "stu-1", name: "Fadumo Abdi", email: "fadumo@somsera.edu", phone: "+251 911 234 567", joined: "2026-11-15" },
+        { id: "stu-2", name: "Mohamed Hassan", email: "mohamed@gmail.com", phone: "+252 63 411 2233", joined: "2026-11-18" }
+      ],
+      enrollments: JSON.parse(localStorage.getItem("somsera_enrollments")) || [
+        {
+          id: "enr-1",
+          studentId: "stu-1",
+          studentName: "Fadumo Abdi",
+          studentPhone: "+251 911 234 567",
+          courseId: "c-math",
+          courseTitle: "Complete Secondary & University Mathematics Mastery",
+          method: "eBirr (COOpay-eBirr)",
+          ref: "EBR9948120",
+          amount: "450 ETB / $8",
+          status: "approved"
+        },
+        {
+          id: "enr-2",
+          studentId: "stu-2",
+          studentName: "Mohamed Hassan",
+          studentPhone: "+252 63 411 2233",
+          courseId: "c-comp",
+          courseTitle: "Practical Computer Skills, MS Office & Digital Literacy",
+          method: "Zaad Service",
+          ref: "ZD7741209",
+          amount: "350 ETB / $6",
+          status: "pending"
+        }
+      ],
+      selectedCategory: "All",
+      searchQuery: "",
+      checkoutCourseId: null,
+      selectedPayMethod: PAYMENT_METHODS[0],
+      activeCourseId: "c-math",
+      activeLessonIdx: 0,
+      quizSelections: {},
+      authMode: "register"
+    };
+
+    function saveState() {
+      try {
+        localStorage.setItem("somsera_courses", JSON.stringify(state.courses));
+        localStorage.setItem("somsera_students", JSON.stringify(state.students));
+        localStorage.setItem("somsera_enrollments", JSON.stringify(state.enrollments));
+        if (state.currentStudent) {
+          localStorage.setItem("somsera_current_student", JSON.stringify(state.currentStudent));
+        }
+        if (state.founderPhoto) {
+          localStorage.setItem("somsera_founder_photo", state.founderPhoto);
+        }
+      } catch (e) {
+        // Ignore storage quota errors for large base64 images
+      }
+    }
+
+    // --- TOAST NOTIFICATIONS ---
+    let toastTimer = null;
+    function showToast(msg) {
+      const el = document.getElementById("toast");
+      document.getElementById("toast-msg").textContent = msg;
+      el.classList.remove("hidden");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(hideToast, 4500);
+    }
+
+    function hideToast() {
+      document.getElementById("toast").classList.add("hidden");
+    }
+
+    // --- FOUNDER PHOTO UPLOAD ---
+    function handleFounderPhotoUpload(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        state.founderPhoto = e.target.result;
+        saveState();
+        renderFounderPhoto();
+        renderCourses();
+        showToast("Founder picture updated across Somsera!");
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function renderFounderPhoto() {
+      const container = document.getElementById("founder-photo-container");
+      if (state.founderPhoto) {
+        container.innerHTML = `<img src="${state.founderPhoto}" alt="Ahmed Ismail Aaden" />`;
+      }
+    }
+
+    // --- NAVIGATION & MODE SWITCHING ---
+    function switchMode(mode) {
+      const studentPortal = document.getElementById("student-portal");
+      const studio = document.getElementById("instructor-studio");
+      const btnStudent = document.getElementById("btn-role-student");
+      const btnInstructor = document.getElementById("btn-role-instructor");
+
+      if (mode === "instructor") {
+        studentPortal.classList.add("hidden");
+        studio.classList.remove("hidden");
+        btnStudent.className = "role-btn";
+        btnInstructor.className = "role-btn active-instructor";
+        renderInstructorStudio();
+      } else {
+        studio.classList.add("hidden");
+        studentPortal.classList.remove("hidden");
+        btnInstructor.className = "role-btn";
+        btnStudent.className = "role-btn active-student";
+        renderCourses();
+      }
+    }
+
+    function showStudentView(view) {
+      document.getElementById("view-home").classList.add("hidden");
+      document.getElementById("view-player").classList.add("hidden");
+      document.getElementById("view-my-learning").classList.add("hidden");
+
+      if (view === "home") {
+        document.getElementById("view-home").classList.remove("hidden");
+        renderCourses();
+      } else if (view === "player") {
+        document.getElementById("view-player").classList.remove("hidden");
+      } else if (view === "my-learning") {
+        document.getElementById("view-my-learning").classList.remove("hidden");
+        renderMyLearning();
+      }
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // --- RENDER COURSE CATALOG ---
+    function filterCategory(cat, btn) {
+      state.selectedCategory = cat;
+      document.querySelectorAll("#category-filters .pill-btn").forEach((b) => b.classList.remove("active"));
+      if (btn) btn.classList.add("active");
+      renderCourses();
+    }
+
+    function handleSearch(val) {
+      state.searchQuery = val.toLowerCase();
+      if (document.getElementById("view-home").classList.contains("hidden")) {
+        showStudentView("home");
+      } else {
+        renderCourses();
+      }
+    }
+
+    function renderCourses() {
+      const grid = document.getElementById("course-grid");
+      const filtered = state.courses.filter((c) => {
+        const matchCat = state.selectedCategory === "All" || c.category === state.selectedCategory;
+        const matchSearch =
+          c.title.toLowerCase().includes(state.searchQuery) ||
+          c.description.toLowerCase().includes(state.searchQuery);
+        return matchCat && matchSearch;
+      });
+
+      grid.innerHTML = filtered
+        .map((c) => {
+          const enrollment = state.currentStudent
+            ? state.enrollments.find((e) => e.studentId === state.currentStudent.id && e.courseId === c.id)
+            : null;
+
+          let actionHtml = `<button class="btn btn-primary" onclick="openCheckout('${c.id}')">Enroll Now</button>`;
+          if (enrollment && enrollment.status === "approved") {
+            actionHtml = `<button class="btn btn-success" onclick="openCoursePlayer('${c.id}')">▶ Start Learning</button>`;
+          } else if (enrollment && enrollment.status === "pending") {
+            actionHtml = `<span class="status-badge status-pending">Verifying Fee...</span>`;
+          }
+
+          const miniAvatarHtml = state.founderPhoto
+            ? `<img src="${state.founderPhoto}" alt="AA" />`
+            : `AA`;
+
+          return `
+            <div class="course-card">
+              <div>
+                <div class="course-banner ${c.bannerClass || "banner-blue"}">
+                  <div class="course-banner-top">
+                    <span class="cat-tag">${c.category}</span>
+                    <span class="rating-tag">★ ${c.rating}</span>
+                  </div>
+                  <div>
+                    <div style="font-size:11.5px;color:#bfdbfe;margin-top:10px;">
+                      ${c.lessons.length} Video Lessons • ${c.quiz.length} Quiz Qs
+                    </div>
+                    <h3 class="course-card-title">${c.title}</h3>
+                  </div>
+                </div>
+
+                <div class="course-body">
+                  <div class="instructor-line">
+                    <div class="mini-avatar">${miniAvatarHtml}</div>
+                    <span>Instructor: <strong>Ahmed Ismail Aaden</strong></span>
+                  </div>
+                  <p class="course-desc">${c.description}</p>
+                  <div class="course-meta">
+                    <span>👥 ${c.students.toLocaleString()} students</span>
+                    <span>⏱️ ${c.duration}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="course-footer">
+                <div>
+                  <div class="price-label">Tuition Fee</div>
+                  <div class="price-value">${c.priceETB} ETB <span>/ $${c.priceUSD}</span></div>
+                </div>
+                ${actionHtml}
+              </div>
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    // --- CHECKOUT & LOCAL PAYMENTS ---
+    function openCheckout(courseId) {
+      if (!state.currentStudent) {
+        openModal("modal-auth");
+        showToast("Please register or sign in as a student first.");
+        return;
+      }
+      const course = state.courses.find((c) => c.id === courseId);
+      if (!course) return;
+      state.checkoutCourseId = courseId;
+
+      document.getElementById("checkout-course-title").textContent = course.title;
+      document.getElementById("checkout-fee-display").textContent = `${course.priceETB} ETB / $${course.priceUSD}`;
+      document.getElementById("checkout-phone").value = state.currentStudent.phone || "";
+      document.getElementById("checkout-ref").value = "";
+
+      renderPaymentMethods();
+      openModal("modal-checkout");
+    }
+
+    function renderPaymentMethods() {
+      const grid = document.getElementById("payment-methods-grid");
+      grid.innerHTML = PAYMENT_METHODS.map(
+        (pm) => `
+        <button type="button" class="pay-method-card ${state.selectedPayMethod.id === pm.id ? "selected" : ""}" onclick="selectPaymentMethod('${pm.id}')">
+          <div style="font-size:12.5px;font-weight:800;color:var(--secondary);">${pm.name}</div>
+          <div style="font-size:10.5px;color:var(--text-muted);margin-top:2px;">${pm.sub}</div>
+        </button>
+      `
+      ).join("");
+
+      document.getElementById("pay-recipient-number").textContent = state.selectedPayMethod.recipient;
+      document.getElementById("pay-instructions-list").innerHTML = state.selectedPayMethod.steps
+        .map((s) => `<li>${s}</li>`)
+        .join("");
+    }
+
+    function selectPaymentMethod(id) {
+      state.selectedPayMethod = PAYMENT_METHODS.find((p) => p.id === id) || PAYMENT_METHODS[0];
+      renderPaymentMethods();
+    }
+
+    function handlePaymentSubmit(e) {
+      e.preventDefault();
+      const ref = document.getElementById("checkout-ref").value.trim().toUpperCase();
+      const phone = document.getElementById("checkout-phone").value.trim();
+      const course = state.courses.find((c) => c.id === state.checkoutCourseId);
+      if (!ref || !course) return;
+
+      state.enrollments.unshift({
+        id: "enr-" + Date.now(),
+        studentId: state.currentStudent.id,
+        studentName: state.currentStudent.name,
+        studentPhone: phone,
+        courseId: course.id,
+        courseTitle: course.title,
+        method: state.selectedPayMethod.name,
+        ref: ref,
+        amount: `${course.priceETB} ETB / $${course.priceUSD}`,
+        status: "pending"
+      });
+
+      saveState();
+      closeModal("modal-checkout");
+      renderCourses();
+      showToast("Payment submitted! Switch to 'Instructor Studio' to approve and unlock immediately.");
+    }
+
+    // --- COURSE PLAYER & QUIZ ---
+    function openCoursePlayer(courseId) {
+      state.activeCourseId = courseId;
+      state.activeLessonIdx = 0;
+      state.quizSelections = {};
+      document.getElementById("quiz-result-banner").classList.add("hidden");
+
+      const course = state.courses.find((c) => c.id === courseId);
+      if (!course) return;
+
+      document.getElementById("player-cat-badge").textContent = course.category;
+      document.getElementById("player-course-title").textContent = course.title;
+      document.getElementById("cert-student-name").textContent = state.currentStudent
+        ? state.currentStudent.name
+        : "Somsera Student";
+      document.getElementById("cert-course-title").textContent = course.title;
+
+      switchPlayerTab("lessons");
+      renderPlayerLesson();
+      showStudentView("player");
+    }
+
+    function switchPlayerTab(tab) {
+      document.getElementById("player-sub-lessons").classList.add("hidden");
+      document.getElementById("player-sub-quiz").classList.add("hidden");
+      document.getElementById("player-sub-cert").classList.add("hidden");
+
+      document.getElementById("tab-btn-lessons").className = "btn btn-outline";
+      document.getElementById("tab-btn-quiz").className = "btn btn-outline";
+      document.getElementById("tab-btn-cert").className = "btn btn-outline";
+
+      document.getElementById(`player-sub-${tab}`).classList.remove("hidden");
+      document.getElementById(`tab-btn-${tab}`).className = "btn btn-primary";
+
+      if (tab === "quiz") renderQuiz();
+    }
+
+    function renderPlayerLesson() {
+      const course = state.courses.find((c) => c.id === state.activeCourseId);
+      if (!course) return;
+
+      const playlist = document.getElementById("lesson-playlist");
+      playlist.innerHTML = course.lessons
+        .map(
+          (l, idx) => `
+          <button class="lesson-item ${idx === state.activeLessonIdx ? "active" : ""}" onclick="selectLesson(${idx})">
+            <span style="font-weight:700;font-size:13.5px;">▶ ${l.title}</span>
+          </button>
+        `
+        )
+        .join("");
+
+      const currentLesson = course.lessons[state.activeLessonIdx];
+      const videoBox = document.getElementById("video-player-container");
+      if (currentLesson) {
+        document.getElementById("current-lesson-title").textContent = currentLesson.title;
+        document.getElementById("current-lesson-notes").textContent = currentLesson.notes;
+        videoBox.innerHTML = `<video controls src="${currentLesson.videoUrl}"></video>`;
+      } else {
+        document.getElementById("current-lesson-title").textContent = "No video lessons uploaded yet";
+        document.getElementById("current-lesson-notes").textContent = "Use the Instructor Studio to upload videos.";
+        videoBox.innerHTML = "";
+      }
+    }
+
+    function selectLesson(idx) {
+      state.activeLessonIdx = idx;
+      renderPlayerLesson();
+    }
+
+    function renderQuiz() {
+      const course = state.courses.find((c) => c.id === state.activeCourseId);
+      const container = document.getElementById("quiz-questions-list");
+      if (!course || course.quiz.length === 0) {
+        container.innerHTML = `<p style="color:var(--text-muted);">No quiz questions created for this course yet.</p>`;
+        return;
+      }
+
+      container.innerHTML = course.quiz
+        .map(
+          (q, qIdx) => `
+          <div class="quiz-card">
+            <div style="font-weight:800;margin-bottom:8px;">${qIdx + 1}. ${q.question}</div>
+            ${q.options
+              .map(
+                (opt, oIdx) => `
+                <button type="button" id="q-${qIdx}-opt-${oIdx}" class="quiz-option ${
+                  state.quizSelections[qIdx] === oIdx ? "selected" : ""
+                }" onclick="pickQuizOption(${qIdx}, ${oIdx})">
+                  ${opt}
+                </button>
+              `
+              )
+              .join("")}
+          </div>
+        `
+        )
+        .join("");
+    }
+
+    function pickQuizOption(qIdx, oIdx) {
+      state.quizSelections[qIdx] = oIdx;
+      renderQuiz();
+    }
+
+    function submitQuiz() {
+      const course = state.courses.find((c) => c.id === state.activeCourseId);
+      if (!course || course.quiz.length === 0) return;
+      let score = 0;
+      course.quiz.forEach((q, qIdx) => {
+        const picked = state.quizSelections[qIdx];
+        const correctBtn = document.getElementById(`q-${qIdx}-opt-${q.correct}`);
+        if (correctBtn) correctBtn.classList.add("correct");
+        if (picked === q.correct) {
+          score++;
+        } else if (picked !== undefined) {
+          const wrongBtn = document.getElementById(`q-${qIdx}-opt-${picked}`);
+          if (wrongBtn) wrongBtn.classList.add("wrong");
+        }
+      });
+
+      const pct = Math.round((score / course.quiz.length) * 100);
+      const banner = document.getElementById("quiz-result-banner");
+      banner.textContent = `🎉 You scored ${score}/${course.quiz.length} (${pct}%)!`;
+      banner.classList.remove("hidden");
+      showToast(`Quiz graded! Your score: ${pct}%`);
+    }
+
+    // --- MY LEARNING ---
+    function renderMyLearning() {
+      const info = document.getElementById("my-learning-student-info");
+      info.textContent = state.currentStudent
+        ? `Student: ${state.currentStudent.name} (${state.currentStudent.email})`
+        : "Please sign in to view your courses.";
+
+      const list = document.getElementById("my-enrollments-list");
+      const mine = state.currentStudent
+        ? state.enrollments.filter((e) => e.studentId === state.currentStudent.id)
+        : [];
+
+      if (mine.length === 0) {
+        list.innerHTML = `<div class="panel-card"><p>You have not enrolled in any courses yet. Click <strong>Browse More Courses</strong> to get started!</p></div>`;
+        return;
+      }
+
+      list.innerHTML = mine
+        .map(
+          (en) => `
+          <div class="panel-card" style="margin-bottom:14px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;">
+            <div>
+              <span class="status-badge ${en.status === "approved" ? "status-approved" : "status-pending"}">
+                ${en.status === "approved" ? "✓ Approved & Unlocked" : "⏳ Pending Fee Verification"}
+              </span>
+              <h3 style="font-size:17px;font-weight:800;margin-top:6px;">${en.courseTitle}</h3>
+              <p style="font-size:12.5px;color:var(--text-muted);">Paid via ${en.method} • Ref: <strong>${en.ref}</strong></p>
+            </div>
+            ${
+              en.status === "approved"
+                ? `<button class="btn btn-primary" onclick="openCoursePlayer('${en.courseId}')">Continue Course →</button>`
+                : `<span style="font-size:12px;color:var(--text-muted);">Instructor Ahmed Ismail Aaden is verifying your fee.</span>`
+            }
+          </div>
+        `
+        )
+        .join("");
+    }
+
+    // --- INSTRUCTOR STUDIO ---
+    function renderInstructorStudio() {
+      document.getElementById("stat-courses").textContent = state.courses.length;
+      document.getElementById("stat-students").textContent = state.students.length;
+      document.getElementById("stat-pending").textContent = state.enrollments.filter((e) => e.status === "pending").length;
+
+      const optionsHtml = state.courses.map((c) => `<option value="${c.id}">${c.title}</option>`).join("");
+      document.getElementById("lesson-course-select").innerHTML = optionsHtml;
+      document.getElementById("quiz-course-select").innerHTML = optionsHtml;
+
+      // Render Payments Table
+      document.getElementById("payments-table-body").innerHTML = state.enrollments
+        .map(
+          (en) => `
+          <tr>
+            <td><strong>${en.studentName}</strong><br><span style="font-size:11.5px;color:var(--text-muted);">${en.studentPhone}</span></td>
+            <td>${en.courseTitle}</td>
+            <td>${en.method}</td>
+            <td><strong style="font-family:monospace;">${en.ref}</strong></td>
+            <td>${en.amount}</td>
+            <td>
+              <span class="status-badge ${en.status === "approved" ? "status-approved" : "status-pending"}">
+                ${en.status === "approved" ? "Verified" : "Pending"}
+              </span>
+            </td>
+            <td>
+              ${
+                en.status === "pending"
+                  ? `<button class="btn btn-success" style="padding:6px 12px;font-size:12px;" onclick="approvePayment('${en.id}')">Approve &amp; Unlock</button>`
+                  : `<span style="color:var(--text-muted);font-size:12px;">Unlocked</span>`
+              }
+            </td>
+          </tr>
+        `
+        )
+        .join("");
+
+      // Render Students Table
+      document.getElementById("students-table-body").innerHTML = state.students
+        .map(
+          (s) => `
+          <tr>
+            <td><strong>${s.name}</strong></td>
+            <td>${s.email}</td>
+            <td>${s.phone}</td>
+            <td>${s.joined}</td>
+          </tr>
+        `
+        )
+        .join("");
+    }
+
+    function switchStudioTab(tab) {
+      ["upload", "create", "payments", "students"].forEach((t) => {
+        document.getElementById(`studio-panel-${t}`).classList.add("hidden");
+        document.getElementById(`studio-tab-${t}`).className = "btn btn-outline";
+      });
+      document.getElementById(`studio-panel-${tab}`).classList.remove("hidden");
+      document.getElementById(`studio-tab-${tab}`).className = "btn btn-primary";
+    }
+
+    function handleCreateCourse(e) {
+      e.preventDefault();
+      const newC = {
+        id: "c-" + Date.now(),
+        title: document.getElementById("new-course-title").value.trim(),
+        category: document.getElementById("new-course-cat").value,
+        bannerClass: "banner-blue",
+        priceETB: Number(document.getElementById("new-course-etb").value) || 400,
+        priceUSD: Number(document.getElementById("new-course-usd").value) || 7,
+        rating: "5.0",
+        students: 1,
+        duration: document.getElementById("new-course-duration").value || "8 Weeks",
+        description: document.getElementById("new-course-desc").value.trim(),
+        lessons: [],
+        quiz: []
+      };
+      state.courses.unshift(newC);
+      saveState();
+      e.target.reset();
+      renderInstructorStudio();
+      showToast(`Course "${newC.title}" published! Now upload video lessons.`);
+    }
+
+    function handleAddLesson(e) {
+      e.preventDefault();
+      const courseId = document.getElementById("lesson-course-select").value;
+      const title = document.getElementById("lesson-title-input").value.trim();
+      const fileInput = document.getElementById("lesson-file-input");
+      let videoUrl = document.getElementById("lesson-url-input").value.trim();
+      const notes = document.getElementById("lesson-notes-input").value.trim() || "Lecture notes by Ahmed Ismail Aaden.";
+
+      if (fileInput.files && fileInput.files[0]) {
+        videoUrl = URL.createObjectURL(fileInput.files[0]);
+      } else if (!videoUrl) {
+        videoUrl = "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4";
+      }
+
+      const course = state.courses.find((c) => c.id === courseId);
+      if (course) {
+        course.lessons.push({
+          id: "l-" + Date.now(),
+          title: title,
+          videoUrl: videoUrl,
+          notes: notes
+        });
+        saveState();
+        e.target.reset();
+        showToast(`Video lesson "${title}" uploaded to ${course.title}!`);
+      }
+    }
+
+    function handleAddQuiz(e) {
+      e.preventDefault();
+      const courseId = document.getElementById("quiz-course-select").value;
+      const qText = document.getElementById("quiz-q-input").value.trim();
+      const opts = [
+        document.getElementById("quiz-opt-0").value.trim(),
+        document.getElementById("quiz-opt-1").value.trim(),
+        document.getElementById("quiz-opt-2").value.trim() || "None of the above",
+        document.getElementById("quiz-opt-3").value.trim() || "All of the above"
+      ];
+      const correct = Number(document.getElementById("quiz-correct-select").value);
+
+      const course = state.courses.find((c) => c.id === courseId);
+      if (course) {
+        course.quiz.push({ question: qText, options: opts, correct: correct });
+        saveState();
+        e.target.reset();
+        showToast("Quiz question added successfully!");
+      }
+    }
+
+    function approvePayment(enrollmentId) {
+      const en = state.enrollments.find((item) => item.id === enrollmentId);
+      if (en) {
+        en.status = "approved";
+        saveState();
+        renderInstructorStudio();
+        showToast(`Payment verified! ${en.studentName} now has full course access.`);
+      }
+    }
+
+    // --- STUDENT AUTH MODAL ---
+    function toggleAuthMode() {
+      state.authMode = state.authMode === "register" ? "login" : "register";
+      const isReg = state.authMode === "register";
+      document.getElementById("auth-modal-title").textContent = isReg ? "Register Student Account" : "Student Sign In";
+      document.getElementById("auth-name-group").classList.toggle("hidden", !isReg);
+      document.getElementById("auth-phone-group").classList.toggle("hidden", !isReg);
+      document.getElementById("auth-switch-text").textContent = isReg ? "Already registered?" : "New to Somsera?";
+      document.getElementById("auth-switch-btn").textContent = isReg ? "Sign In" : "Register Free";
+    }
+
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById("auth-email").value.trim();
+      const name = document.getElementById("auth-name").value.trim() || email.split("@")[0];
+      const phone = document.getElementById("auth-phone").value.trim() || "+251 900 000 000";
+
+      if (state.authMode === "register") {
+        const newStu = {
+          id: "stu-" + Date.now(),
+          name: name,
+          email: email,
+          phone: phone,
+          joined: new Date().toISOString().split("T")[0]
+        };
+        state.students.unshift(newStu);
+        state.currentStudent = newStu;
+        showToast(`Welcome to Somsera, ${newStu.name}!`);
+      } else {
+        const existing = state.students.find((s) => s.email.toLowerCase() === email.toLowerCase());
+        state.currentStudent = existing || { id: "stu-" + Date.now(), name: name, email: email, phone: phone };
+        showToast(`Welcome back, ${state.currentStudent.name}!`);
+      }
+
+      saveState();
+      updateHeaderAuthBtn();
+      closeModal("modal-auth");
+      renderCourses();
+    }
+
+    function updateHeaderAuthBtn() {
+      const btn = document.getElementById("btn-auth-trigger");
+      if (state.currentStudent) {
+        btn.textContent = `👤 ${state.currentStudent.name.split(" ")[0]}`;
+        btn.className = "btn btn-outline";
+      }
+    }
+
+    // --- MODAL HELPERS ---
+    function openModal(id) {
+      document.getElementById(id).classList.remove("hidden");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add("hidden");
+    }
+
+    // --- INITIALIZE APP ---
+    window.addEventListener("DOMContentLoaded", () => {
+      renderFounderPhoto();
+      updateHeaderAuthBtn();
+      renderCourses();
+    });
+  </script>
+</body>
+</html>
